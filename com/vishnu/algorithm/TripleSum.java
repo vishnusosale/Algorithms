@@ -64,6 +64,7 @@ public class TripleSum {
 	/***
 	 * This is a Brute force algorithm.
 	 * Checks all the elements of the array to check for triple.
+	 * Returns number of triples in a given array
 	 * @param integers
 	 * @return 
 	 */

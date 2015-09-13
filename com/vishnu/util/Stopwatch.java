@@ -24,6 +24,11 @@ THE SOFTWARE.
 
 package com.vishnu.util;
 
+/**
+ * @author vishnu
+ *
+ */
+
 public class Stopwatch {
 	
 	private static double startTime;
