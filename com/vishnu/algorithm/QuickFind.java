@@ -24,68 +24,46 @@ THE SOFTWARE.
 
 package com.vishnu.algorithm;
 
-import java.util.Scanner;
-
-import com.vishnu.util.Stopwatch;
-
 /***
  * 
  * @author vishnu
  *
- */ 
+ */
 
-public class TripleSum {
+public class QuickFind {
 	
-	public static void main(String[] args)
+	private int[] id;
+	
+	/**
+	 * Quick Find is an Eager algorithm which is used to solve dynamic connectivity problems
+	 * Two nodes are said to be connected iff they have same entry points, here same ids
+	 * @param arraySize
+	 */
+	public QuickFind(int arraySize)
 	{
-		int size;
-		Scanner sc;
-		int[] integers;
-		
-		System.out.println("Enter number of integers");
-		sc = new Scanner(System.in);
-		size = sc.nextInt();
-		integers = new int[size];
-		
-		System.out.println("Enter " + size + " integers");
-		
-		for(int i = 0; i<size; i++)
+		id = new int[arraySize];
+		for(int i = 0; i<arraySize; i++)
 		{
-			integers[i] = sc.nextInt();
+			id[i] = i;
 		}
-		
-		sc.close();
-		
-		Stopwatch.start();
-		System.out.println("Number of Triple Sums are: " + calculateTripleSum(integers));
-		System.out.println("Total time elapsed = " + Stopwatch.end());
 	}
 	
-	/***
-	 * This is a Brute force algorithm.
-	 * Checks all the elements of the array for a triple.
-	 * Returns number of triples in a given array
-	 * @param integers
-	 * @return 
-	 */
-	private static int calculateTripleSum(int[] integers)
+	public boolean isConnected(int m, int n)
 	{
-		int count = 0;
-		
-		for(int i = 0; i<integers.length; i++)
+		return id[m] == id[n];
+	}
+	
+	public void union(int m, int n)
+	{
+		int mId = id[m];
+		int nId = id[n];
+		for(int i = 0; i<id.length; i++)
 		{
-			for(int j = i+1; j<integers.length; j++)
+			if(id[i] == mId)
 			{
-				for(int k = j+1; k<integers.length; k++)
-				{
-					if(integers[i] + integers[j] + integers[k] == 0)
-					{
-						count++;
-					}
-				}
+				id[i] = nId;
 			}
 		}
-		
-		return count;
 	}
+
 }
